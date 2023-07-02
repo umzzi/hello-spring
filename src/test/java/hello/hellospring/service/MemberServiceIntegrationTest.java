@@ -1,6 +1,7 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class MemberServiceIntegrationTest {
     @Autowired MemberService memberService;
-    @Autowired MemoryMemberRepository memberRepository ;
+    @Autowired
+    MemberRepository memberRepository ;
 
     @Test
     void 회원가입() {
@@ -36,10 +38,10 @@ class MemberServiceIntegrationTest {
     void 중복_회원_예외(){
         //given
         Member member1 = new Member();
-        member1.setName("spring");
+        member1.setName("spring4");
 
         Member member2 = new Member();
-        member2.setName("spring");
+        member2.setName("spring3");
 
         //when
         memberService.join(member1);
